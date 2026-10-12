@@ -151,7 +151,7 @@ export default function Dashboard() {
     fetchAll();
   };
 
-  // ✅ CONFIRMATION DE RÉSERVATION
+  //  CONFIRMATION DE RÉSERVATION
   const confirmReservation = async (id: number) => {
     const response = await fetchWithAuth(`${API_BASE}/reservations/${id}/confirm`, {
       method: "PATCH",
@@ -173,7 +173,7 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-[#1e1e1e] text-white">
       {/* Header */}
-      <header className="bg-gradient-to-r from-[#F57C00] to-[#FF9800] text-white p-4 shadow-md sticky top-0 z-50">
+      <header className="bg-linear-to-r from-[#F57C00] to-[#FF9800] text-white p-4 shadow-md sticky top-0 z-50">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-xl font-bold">Tableau de bord administrateur</h1>
           <button

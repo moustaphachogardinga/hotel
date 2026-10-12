@@ -1,16 +1,9 @@
 // src/pages/Admin/MessageTable.tsx
-interface Message {
-  id: number;
-  name: string;
-  email: string;
-  phone?: string;
-  subject: string;
-  message: string;
-}
+import type { Message } from "../../types";
 
 interface Props {
   messages: Message[];
-  onDeleteMessage: (id: number) => void;
+  onDeleteMessage: (id: number) => Promise<void>;
 }
 
 export default function MessageTable({ messages, onDeleteMessage }: Props) {

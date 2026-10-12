@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 
 async function seed() {
   try {
-    console.log('🗑️  Réinitialisation des tables...');
+    console.log('  Réinitialisation des tables...');
 
     await pool.query('SET FOREIGN_KEY_CHECKS = 0');
     await pool.query('DROP TABLE IF EXISTS reservations');
@@ -15,7 +15,7 @@ async function seed() {
     await pool.query('DROP TABLE IF EXISTS admins');
     await pool.query('SET FOREIGN_KEY_CHECKS = 1');
 
-    console.log('🏗️  Création des tables...');
+    console.log(' Création des tables...');
 
     // ---------------- ADMIN ----------------
     await pool.query(`
@@ -36,10 +36,10 @@ async function seed() {
         description TEXT,
         price INT NOT NULL,
         image VARCHAR(255),
-        size VARCHAR(50),          -- ✅ au lieu de "surface"
+        size VARCHAR(50),          --  au lieu de "surface"
         capacity VARCHAR(50),
-        features TEXT,             -- ✅ au lieu de "equipment"
-        available TINYINT(1) DEFAULT 1, -- ✅ gère la disponibilité
+        features TEXT,             --  au lieu de "equipment"
+        available TINYINT(1) DEFAULT 1, -- gère la disponibilité
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `);
@@ -173,12 +173,12 @@ async function seed() {
       );
     }
 
-    console.log('✅ Base de données réinitialisée et données insérées avec succès !');
-    console.log('🔑 Identifiants admin : admin / chogar@12');
+    console.log('Base de données réinitialisée et données insérées avec succès !');
+    console.log(' Identifiants admin : admin / chogar@12');
     process.exit(0);
 
   } catch (err) {
-    console.error('❌ Erreur lors du seed :', err);
+    console.error('Erreur lors du seed :', err);
     process.exit(1);
   }
 }

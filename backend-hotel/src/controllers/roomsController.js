@@ -1,7 +1,7 @@
 // src/controllers/roomsController.js
 import { Room } from "../models/Room.js";
 
-// ✅ Obtenir toutes les chambres
+//  Obtenir toutes les chambres
 export const getRooms = async (req, res) => {
   try {
     const rooms = await Room.findAll();
@@ -12,7 +12,7 @@ export const getRooms = async (req, res) => {
   }
 };
 
-// ✅ Obtenir une chambre par ID
+// Obtenir une chambre par ID
 export const getRoom = async (req, res) => {
   const id = parseInt(req.params.id, 10);
   if (isNaN(id)) {
@@ -31,7 +31,7 @@ export const getRoom = async (req, res) => {
   }
 };
 
-// ✅ Ajouter une chambre
+// Ajouter une chambre
 export const addRoom = async (req, res) => {
   const { 
     name, 
@@ -77,7 +77,7 @@ export const addRoom = async (req, res) => {
   }
 };
 
-// ✅ Mettre à jour une chambre
+//  Mettre à jour une chambre
 export const updateRoom = async (req, res) => {
   const id = parseInt(req.params.id, 10);
   if (isNaN(id)) {
@@ -134,7 +134,7 @@ export const updateRoom = async (req, res) => {
   }
 };
 
-// ✅ Supprimer une chambre
+//  Supprimer une chambre
 export const deleteRoom = async (req, res) => {
   const id = parseInt(req.params.id, 10);
   if (isNaN(id)) {

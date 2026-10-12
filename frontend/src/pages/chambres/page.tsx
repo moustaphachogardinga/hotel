@@ -76,7 +76,7 @@ export default function ChambresPage() {
                           h-64 md:h-full 
                           bg-cover bg-center 
                           animate-slow-zoom 
-                          transform transition-transform duration-[2500ms] ease-out 
+                          transform transition-transform duration-2500 ease-out 
                           group-hover:scale-110 group-hover:translate-x-3
                         "
                         style={{ backgroundImage: `url('${getImageUrl(room.image)}')` }}

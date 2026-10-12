@@ -56,7 +56,7 @@ export const deleteRoom = async (id: number, token: string) => {
   const res = await fetch(`${API_BASE}/rooms/${id}`, {
     method: "DELETE",
     headers: { Authorization: `Bearer ${token}` },
-    cache: "no-store", // 🔥 Important aussi ici
+    cache: "no-store", // Important aussi ici
   });
   const data = await res.json();
   if (!data.success) throw new Error(data.message || "Erreur suppression chambre");

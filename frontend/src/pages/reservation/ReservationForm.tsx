@@ -114,7 +114,7 @@ return ( <div className="bg-white rounded-lg shadow-sm p-8"> <h2 className="text
 
     {/* Téléphone */}
     <div>
-      <label className="block text-sm font-medium mb-2">Téléphone *</label>
+      <label className="block text-sm font-medium mb-2">Téléphone </label>
       <input
         type="tel"
         name="phone"
@@ -128,7 +128,7 @@ return ( <div className="bg-white rounded-lg shadow-sm p-8"> <h2 className="text
     {/* Dates */}
     <div className="grid md:grid-cols-2 gap-6">
       <div>
-        <label className="block text-sm font-medium mb-2">Date d'arrivée *</label>
+        <label className="block text-sm font-medium mb-2">Date d'arrivée </label>
         <input
           type="date"
           name="checkIn"
@@ -139,7 +139,7 @@ return ( <div className="bg-white rounded-lg shadow-sm p-8"> <h2 className="text
         />
       </div>
       <div>
-        <label className="block text-sm font-medium mb-2">Date de départ *</label>
+        <label className="block text-sm font-medium mb-2">Date de départ </label>
         <input
           type="date"
           name="checkOut"

@@ -4,13 +4,14 @@
 
 // -------------------- CHAMBRES --------------------
 export type Room = {
+  image(image: any): unknown;
   id: number;
   name: string;
   price: number;
   description?: string;
-  images?: string[];   // ✅ ajouté
+  images?: string[];   // ajouté
   features?: string[];
-  details?: string[];  // ✅ ajouté
+  details?: string[];  //  ajouté
   size: string;
   capacity: string;
 };
@@ -67,3 +68,15 @@ export type Service = {
 
 // Pour créer un nouveau service (frontend form)
 export type NewService = Omit<Service, "id">;
+
+// -------------------- MENU --------------------
+export type MenuItem = {
+  id: number;
+  name: string;
+  category: "appetizers" | "mains" | "desserts" | "beverages";
+  price: number;
+  description?: string;
+};
+
+// Pour créer un nouvel élément de menu (frontend form)
+export type NewMenuItem = Omit<MenuItem, "id">;

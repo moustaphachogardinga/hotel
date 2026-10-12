@@ -3,63 +3,62 @@ import type { Room } from "../../types";
 import { getRooms } from "../../api";
 
 interface RoomSelectionProps {
-selectedRoom: Room | null;
-onRoomSelect: (room: Room) => void;
+  selectedRoom: Room | null;
+  onRoomSelect: (room: Room) => void;
 }
 
 export default function RoomSelection({ selectedRoom, onRoomSelect }: RoomSelectionProps) {
-const [rooms, setRooms] = useState<Room[]>([]);
-const [loading, setLoading] = useState(true);
-const [error, setError] = useState<string | null>(null);
+  const [rooms, setRooms] = useState<Room[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-useEffect(() => {
-const loadRooms = async () => {
-try {
-setLoading(true);
-const data = await getRooms();
-setRooms(Array.isArray(data) ? data : []);
-} catch (err: any) {
-console.error("Erreur chargement chambres:", err);
-setError(err.message || "Impossible de charger les chambres.");
-} finally {
-setLoading(false);
-}
-};
-loadRooms();
-}, []);
+  useEffect(() => {
+    const loadRooms = async () => {
+      try {
+        setLoading(true);
+        const data = await getRooms();
+        setRooms(Array.isArray(data) ? data : []);
+      } catch (err: any) {
+        console.error("Erreur chargement chambres:", err);
+        setError(err.message || "Impossible de charger les chambres.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadRooms();
+  }, []);
 
-// Construit l'URL complète pour le navigateur
-const getImageUrl = (path?: string) => {
-if (!path) return "[https://via.placeholder.com/150?text=Pas+d'image](https://via.placeholder.com/150?text=Pas+d'image)";
-if (path.startsWith("http")) return path;
-return `http://localhost:5001/images/${path.replace(/^public\/images\//, "")}`;
-};
+  // Construit l'URL complète pour le navigateur
+  const getImageUrl = (path?: string) => {
+    if (!path) return "[https://via.placeholder.com/150?text=Pas+d'image](https://via.placeholder.com/150?text=Pas+d'image)";
+    if (path.startsWith("http")) return path;
+    return `http://localhost:5001${path}`;
+  };
 
-if (loading) return <p className="text-center py-10">Chargement des chambres...</p>;
-if (error) return <p className="text-center py-10 text-red-600">{error}</p>;
-if (rooms.length === 0) return <p className="text-center py-10">Aucune chambre disponible.</p>;
+  if (loading) return <p className="text-center py-10">Chargement des chambres...</p>;
+  if (error) return <p className="text-center py-10 text-red-600">{error}</p>;
+  if (rooms.length === 0) return <p className="text-center py-10">Aucune chambre disponible.</p>;
 
-return ( <div className="bg-white rounded-lg shadow-sm p-8"> <h2 className="text-2xl font-bold text-gray-900 mb-6">Choisissez votre chambre</h2> <div className="space-y-6">
-{rooms.map((room) => {
-const images = Array.isArray(room.images) ? room.images : room.images ? [room.images] : [];
-const features = Array.isArray(room.features) ? room.features : [];
+  return (<div className="bg-white rounded-lg shadow-sm p-8"> <h2 className="text-2xl font-bold text-gray-900 mb-6">Choisissez votre chambre</h2> <div className="space-y-6">
+    {rooms.map((room) => {
+      const images = Array.isArray(room.images) ? room.images : room.images ? [room.images] : [];
+      const features = Array.isArray(room.features) ? room.features : [];
 
 
       return (
         <div
           key={room.id}
-          className={`border-2 rounded-lg p-6 cursor-pointer transition-all ${
-            selectedRoom?.id === room.id
+          className={`border-2 rounded-lg p-6 cursor-pointer transition-all ${selectedRoom?.id === room.id
               ? "border-amber-500 bg-amber-50"
               : "border-gray-200 hover:border-amber-300"
-          }`}
+            }`}
           onClick={() => onRoomSelect(room)}
         >
-          <div className="flex gap-4">
+          <div className="flex gap-4">s
             {/* Première image principale */}
             <div
               className="w-24 h-24 bg-cover bg-center rounded-lg"
-              style={{ backgroundImage: `url('${getImageUrl(images[0])}')` }}
+              style={{ backgroundImage: `url('${getImageUrl(rooms.images)}')` }}
             />
 
             {/* Texte et détails */}
@@ -113,8 +112,8 @@ const features = Array.isArray(room.features) ? room.features : [];
       );
     })}
   </div>
-</div>
+  </div>
 
 
-);
+  );
 }
